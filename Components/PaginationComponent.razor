@@ -1,0 +1,12 @@
+﻿
+<div class="pagination">
+    <button class="btn btn-primary" disabled="@_isFirstPage" @onclick="GoToPreviousPage">Previous</button>
+    @if (_pageItems is not null)
+    {
+        @foreach (var pageItem in _pageItems)
+        {
+            <button class="btn btn-primary @(pageItem.IsActive ? "active" : "") @(pageItem.IsEnabled ? "" : "disabled")" @onclick="(() => GoToPage(pageItem))">@pageItem.Text</button>
+        }
+    }
+    <button class="btn btn-primary" disabled="@_isLastPage" @onclick="GoToNextPage">Next</button>
+</div>
