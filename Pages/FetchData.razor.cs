@@ -15,7 +15,7 @@ namespace PaginationWithVirtualizationBlazorApp.Pages
             allForecasts = await ForecastService.GetForecastAsync(DateTime.Now);
             if (allForecasts is not null)
             {
-                _totalPages = (int)allForecasts.Count / _itemsPerPage;
+                _totalPages = (int)Math.Ceiling((double)allForecasts.Count / _itemsPerPage);
                 PaginateForecasts();
             }
         }
